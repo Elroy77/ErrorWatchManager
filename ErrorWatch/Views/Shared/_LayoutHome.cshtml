@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+@RenderPage("_LayoutLinkStyle.cshtml")
+<body class="animsition">
+    <div class="page-wrapper">
+        @RenderPage("_LayoutLeftMenu.cshtml")
+        <div class="page-container">
+            @RenderPage("_LayoutHeader.cshtml")
+            @RenderBody()
+        </div>
+    </div>
+    @RenderPage("_LayoutLinkJS.cshtml")
+</body>
+
+</html>

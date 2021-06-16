@@ -1,0 +1,66 @@
+﻿@model ErrorWatch.Models.User
+@RenderPage("~/Views/Shared/_LayoutLinkStyle.cshtml")
+<body class="animsition">
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="~/Assets/images/icon/logo.png" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        <div class="login-form">
+                            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <label>User name</label>
+                                    @Html.TextBoxFor(model => model.User_Name, new { @class = "au-input au-input--full", @type = "text", @name = "User_Name", @placeholder = "EX: Employee1..." })
+                                </div>
+                                <p>
+                                    @Html.ValidationMessageFor(model => model.User_Name)
+                                </p>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    @Html.TextBoxFor(model => model.User_Password, new { @class = "au-input au-input--full", @type = "password", @name = "User_Password", @placeholder = "Ex: passw..."})
+                                </div>
+                                <p>
+                                    @Html.ValidationMessageFor(model => model.User_Password)
+                                </p>
+                                <div class="login-checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember">Remember Me
+                                    </label>
+                                    <label>
+                                        <a href="#">Forgotten Password?</a>
+                                    </label>
+                                </div>
+                                <br />
+                                <div class="register-link">
+                                    <p>
+                                        Don't you have account?
+                                        <a href="#">Sign Up Here</a>
+                                    </p>
+                                </div>
+                                <br />
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                            }
+                        </div>
+                        <center>
+                            <div>
+                                @if(ViewBag.ErrorLogin != null)
+                                { 
+                                    <h4 style="color:red;font-style:normal;font-weight:initial" class="alert alert-danger">@ViewBag.ErrorLogin</h4>
+                                }
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @RenderPage("~/Views/Shared/_LayoutLinkJS.cshtml")
+
+</body>

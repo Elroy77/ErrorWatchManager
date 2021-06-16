@@ -1,0 +1,102 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Quản lý sản phẩm</h3>
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                        <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>Lọc</button>
+                    </div>
+                    @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { enctype = "multipart/form-data", @class = "form-header", @style = "margin-left:-400px; margin-top: -2px;" }))
+                    {
+                        <input class="au-input au-input--xl" type="text" name="searchString" placeholder="Tìm tên sản phẩm,.." />
+                        <button class="au-btn--submit" type="submit">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+                    }
+                    <div class="table-data__tool-right">
+                        <a href="https://localhost:44368/Products/create" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>Thêm sản phẩm
+                        </a>
+                    </div>
+                </div>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>Price</th>
+                                    <th>Size</th>
+                                    <th>Gender</th>
+                                    <th>Image</th>
+                                    <th>Inventory_Number</th>
+                                    <th>Status</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Rows.Count; i++)
+                                {
+                                <tr class="tr-shadow">
+                                    <td>@Model.Rows[i][0]</td>
+                                    <td>@Model.Rows[i][1]</td>
+                                    <td><span class="block-email status--denied">@string.Format("{0:0,0đ}", @Model.Rows[i][2])</span></td>
+                                    <td>@Model.Rows[i][3]</td>
+                                    <td>
+                                        @if (Model.Rows[i]["Gender"].ToString().Contains("1"))
+                                        {<span class="role admin">Male</span>}
+                                        @if (Model.Rows[i]["Gender"].ToString().Contains("0"))
+                                        {<span class="role member">FeMale</span>}
+                                    </td>
+                                    <td>
+                                        <img src="~/Uploads/images/products/@Model.Rows[i][5]"/>
+                                    </td>
+                                    <td>
+                                        <span class="block-email">@Model.Rows[i][7]</span> 
+                                    </td>
+                                    <td>
+                                        @if (Model.Rows[i]["Status"].ToString().Contains("True"))
+                                        {<span class="status--process">Đang bán</span>}
+                                        @if (Model.Rows[i]["Status"].ToString().Contains("False"))
+                                        {<span class="status--denied">Khóa</span>}
+                                    </td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <a href="@Url.Action("Detail", "Products", new { @id = Model.Rows[i][0] })" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
+                                                <i class="fa fa-file-text"></i>
+                                            </a>
+                                            <a href="@Url.Action("Update", "Products", new { @id = Model.Rows[i][0] })" class="item" data-toggle="tooltip" data-placement="top" title="Update">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "Products", new { @id = Model.Rows[i][0] })" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                    <tr class="spacer"></tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

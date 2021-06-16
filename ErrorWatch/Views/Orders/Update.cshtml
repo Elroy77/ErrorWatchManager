@@ -1,0 +1,60 @@
+﻿@model ErrorWatch.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">Quản lý đơn hàng</h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Cập nhật thông tin đơn hàng</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        @using (Html.BeginForm(new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.OrderDetail_ID);
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label"></label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static" style="font-size:17px;margin-left:100px;margin-bottom:20px;">Nhập thông tin sản phẩm</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">Name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "text-input", @name = "text-input"} })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-dot-circle-o"></i> Update
+                                </button>
+                                <button type="reset" class="btn btn-danger">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
+                                <a href="https://localhost:44368/Orders/index" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-backward"></i> Back
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

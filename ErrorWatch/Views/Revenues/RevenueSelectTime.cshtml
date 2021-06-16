@@ -1,0 +1,50 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "RevenueSelectTime";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Thống kê</h3>
+                    <h2>Doanh thu <span class="status--denied"></span></h2>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <div class="table-data__tool">
+                                @using (Html.BeginForm("RevenueSelectTime", "Revenues", FormMethod.Get, new { enctype = "multipart/form-data", @class = "form-header", @style = "margin-left:-400px; margin-top: -2px;" }))
+                                {
+                                    <input class="au-input au-input--xl" type="text" name="stringnameProduct" placeholder="Tên sản phẩm..." style="margin-left:400px;margin-right:5px;" value="@ViewBag.nameProduct" />
+                                    <input class="au-input au-input--xl" type="text" name="stringtimeStart" placeholder="Ngày bắt đầu..." style="margin-right:5px;" value="@ViewBag.timeStart" />
+                                    <input class="au-input au-input--xl" type="text" name="stringtimeEnd" placeholder="Ngày kết thúc.." style="margin-right:10px;" value="@ViewBag.timeEnd" />
+                                    <button class="au-btn--submit" type="submit">
+                                        <i class="zmdi">Thống kê</i>
+                                    </button>
+                                }
+                            </div>
+                            <div class="table-responsive table-responsive-data2">
+                                <div class="card-footer">
+
+                                    @for (int i = 0; i < Model.Rows.Count; i++)
+                                    {
+                                        <h3>@string.Format("{0:0,0} đ", @Model.Rows[i][0])</h3>
+                                    }
+                                </div>
+                                <br />
+                                <a href="https://localhost:44368/Revenues/index" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-backward"></i> Back
+                                </a>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

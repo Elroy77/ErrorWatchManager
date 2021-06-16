@@ -1,0 +1,58 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "ViewUsersEmployee";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Thống kê</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>Lọc</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>User name</th>
+                                    <th>Empployee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Rows.Count; i++)
+                                {
+                                    <tr class="tr-shadow">
+                                        <td>@Model.Rows[i][0]</td>
+                                        <td>@Model.Rows[i][1]</td>
+                                        <td>@Model.Rows[i][2]</td>
+                                    </tr>
+                                    <tr class="spacer"></tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://localhost:44368/Revenues/index" type="submit" class="btn btn-primary">
+                            <i class="fa fa-backward"></i> Back
+                        </a>
+                    </div>
+                    <!-- END DATA TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

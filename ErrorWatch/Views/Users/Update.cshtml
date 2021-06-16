@@ -1,0 +1,142 @@
+﻿@model ErrorWatch.Models.User
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">Quản lý người dùng</h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Cập nhật thông tin người dùng</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        @using (Html.BeginForm(new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label"></label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static" style="font-size:17px;margin-left:100px;margin-bottom:20px;">Nhập thông tin người dùng</p>
+                                </div>
+                            </div>
+                            @Html.HiddenFor(model => model.User_ID);
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">Full name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.User_FullName, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "text-input", @name = "text-input", @placeholder = "Ex: Nguyễn Văn Mạnh..." } })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">User name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.User_Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "text-input", @name = "text-input", @placeholder = "Ex: User..." } })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">Password</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.User_Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "text-input", @name = "text-input", @placeholder = "Ex: Password..." } })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="email-input" class=" form-control-label">Email</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @id = "email-input", @name = "email-input", @placeholder = "Ex: nguyenvanmanhh360@gmail.com" } })
+                                    <small class="help-block form-text"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">Phone</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "text-input", @name = "text-input", @placeholder = "Ex: 0358511226" } })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">Address</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "text-input", @name = "text-input", @placeholder = "Ex: Hà Nội" } })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="file-input" class=" form-control-label">Avatar</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="select" class=" form-control-label">Role</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.DropDownListFor(model => model.Role,
+                                    new List<SelectListItem>
+                                    {
+                                        new SelectListItem { Value = "" , Text = "Select" },
+                                        new SelectListItem { Value = "2" , Text = "admin" },
+                                        new SelectListItem { Value = "1" , Text = "employee" },
+                                        new SelectListItem { Value = "0" , Text = "user" }
+                                    }, new { @class = "form-control", @id = "select", @name = "select" })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="select" class=" form-control-label">Status</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.DropDownListFor(model => model.Status,
+                                    new List<SelectListItem>
+                                       {
+                                            new SelectListItem { Value = "" , Text = "Select" },
+                                            new SelectListItem { Value = "True" , Text = "Process" },
+                                            new SelectListItem { Value = "False" , Text = "Denied" },
+                                       }, new { @class = "form-control", @id = "select", @name = "select" })
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-dot-circle-o"></i> Update
+                                </button>
+                                <button type="reset" class="btn btn-danger">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
+                                <a href="https://localhost:44368/Users/index" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-backward"></i> Back
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

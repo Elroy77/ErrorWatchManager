@@ -1,0 +1,34 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "RevenueForTheMonth";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Thống kê</h3>
+                    <h2>Doanh thu của tháng <span class="status--denied">@DateTime.Now.ToString("MM")</span></h2>
+                    <br />
+                    <div class="table-responsive table-responsive-data2">
+                        <div class="card-footer">
+
+                            @for (int i = 0; i < Model.Rows.Count; i++)
+                            {
+                                <h3>@string.Format("{0:0,0} đ", @Model.Rows[i][0])</h3>
+                            }
+                        </div>
+                        <br />
+                        <a href="https://localhost:44368/Revenues/index" type="submit" class="btn btn-primary">
+                            <i class="fa fa-backward"></i> Back
+                        </a>
+                    <!-- END DATA TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

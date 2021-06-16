@@ -1,0 +1,66 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "viewchitietdonhang";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Thống kê</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>Lọc</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>total</th>
+                                    <th>Full Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Rows.Count; i++)
+                                {
+                                <tr class="tr-shadow">
+                                    <td>@Model.Rows[i][0]</td>
+                                    <td>@Model.Rows[i][1]</td>
+                                    <td>@Model.Rows[i][2]</td>
+                                    <td>@string.Format("{0:0,0}đ", @Model.Rows[i][3])</td>
+                                    <td>@string.Format("{0:0,0}đ", @Model.Rows[i][4])</td>
+                                    <td>@Model.Rows[i][5]</td>
+                                </tr>
+                                    <tr class="spacer"></tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://localhost:44368/Orders/index" type="submit" class="btn btn-primary">
+                            <i class="fa fa-backward"></i> Back
+                        </a>
+                    </div>
+                    <!-- END DATA TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

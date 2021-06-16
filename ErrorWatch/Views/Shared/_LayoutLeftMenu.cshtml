@@ -1,0 +1,117 @@
+﻿<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a href="/Home/Index">
+            <img src="~/Assets/images/icon/logo.png" alt="Admin" />
+        </a>
+    </div>
+    @if (Session["USER_SESSION"].ToString() == "admin")
+    {
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+                    <li class="has-sub">
+                        <a class="js-arrow" href="/Home/index">
+                            <i class="fas fa-tachometer-alt"></i>Tổng quan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Users/index">
+                            <i class="fas fa-user"></i>Người dùng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Orders/index">
+                            <i class="fas fa-file"></i>Đơn hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Products/index">
+                            <i class="fas fa-table"></i>Sản phẩm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Revenues/index">
+                            <i class="fas fa-align-justify"></i>Thống kê
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Employees/index">
+                            <i class="fas fa-user"></i>Nhân viên
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Manufacturers/index">
+                            <i class="fas fa-file-text"></i>Hãng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Map/index">
+                            <i class="fas fa-map-marker-alt"></i>Bản đồ
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-copy"></i>Thao tác
+                        </a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                <a href="login.html">Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a href="register.html">đăng ký</a>
+                            </li>
+                            <li>
+                                <a href="forget-pass.html">Tìm lại mật khẩu</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-desktop"></i>Cài đặt giao diện
+                        </a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                <a href="fontawesome.html">Fontawesome Icon</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    }
+    else
+    {
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+                    <li class="has-sub">
+                        <a class="js-arrow" href="/Home/index">
+                            <i class="fas fa-tachometer-alt"></i>Tổng quan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Orders/index">
+                            <i class="fas fa-file"></i>Đơn hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Products/index">
+                            <i class="fas fa-table"></i>Sản phẩm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Manufacturers/index">
+                            <i class="fas fa-file-text"></i>Hãng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Map/index">
+                            <i class="fas fa-map-marker-alt"></i>Bản đồ
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    }
+
+</aside>
